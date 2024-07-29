@@ -1,19 +1,14 @@
-from telegram.ext import Updater, MessageHandler, filters
+from telegram.ext import ApplicationBuilder, MessageHandler, filters
 from bot.handlers import handle_message
 from bot.config import TOKEN
 
 
-def run() -> None:
-
-    updater = Updater(TOKEN)
-    dispatcher = updater.dispatcher
+def run():
+    application = ApplicationBuilder().token(TOKEN).build()
 
     # Register message handler
-    dispatcher.add_handler(MessageHandler(filters.text & ~filters.command, # text and not command
-                                          handle_message))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, # text and not command
+                                            handle_message))
 
     # Start the Bot
-    updater.start_polling()
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT, SIGTERM or SIGABRT
-    updater.idle()
+    application.run_polling()

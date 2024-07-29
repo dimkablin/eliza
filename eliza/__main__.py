@@ -1,4 +1,11 @@
+import logging
+
 import bot
 
-if __name__=="__main__":
-    bot.run()
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+
+bot.run()
