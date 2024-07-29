@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Model's weights 
+*.gguf
+*.GGUF
+
 # Distribution / packaging
 .Python
 build/
